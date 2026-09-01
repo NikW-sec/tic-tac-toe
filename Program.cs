@@ -1,14 +1,3 @@
-using System.Security.Authentication.ExtendedProtection;
-
-static void Players(string name1, string name2) //set up two players and their name (name using input later)
-{
-  string player1 = name1;
-  string player2 = name2;
-  int player1Score = 0;
-  int player2Score = 0;
-  Console.WriteLine(player1);
-}  
-
 string[] grid =
   {
     "0", "1", "2",
@@ -77,13 +66,15 @@ static void main()
  Console.WriteLine("Welcome to tic tac toe");
 
  Console.WriteLine("Enter the name of player 1");
- string user1 = Console.ReadLine();
+ string player1 = Console.ReadLine();
  Console.WriteLine("Enter the name of player 2");
- string user2 = Console.ReadLine();
- Players(user1,user2);
+ string player2 = Console.ReadLine();
 }
 
-int CurrentPlayerAndScore()
+int player1Score = 0;
+int player2Score = 0;
+
+string CurrentPlayerAndScore()
 {
  if (currentPlayer == "Player1")
  {
@@ -101,6 +92,5 @@ displayGrid();
 currentPlayer = "Player1";
 gridReplacement(1);
 displayGrid();
-CurrentPlayerAndScore();
-
+Console.WriteLine(CurrentPlayerAndScore());
 
