@@ -26,12 +26,38 @@ static void TheGrid() //function for gird
 }
 
 
-//inital welcomign and user name
-Console.WriteLine("Welcome to tic tac toe");
+int turning = 0;  // used to decide if it is palyer 1 or 2 turn, use even or odd caluculation
+string currentPlayer = null;  //use for who actual place a move later
+void turn()
+{
+ while (ended = false)
+  { 
+    if (turning % 2 ==0)
+     {
+        Console.WriteLine("It is player 1's turn");
+        currentPlayer = "Player1";
+     }
+    else
+     {
+        Console.WriteLine("It is player 2's turn");
+        currentPlayer = "Player2"; 
+     }
+    turning ++;
+  }
+}
 
-Console.WriteLine("Enter the name of player 1");
-string user1 = Console.ReadLine();
-Console.WriteLine("Enter the name of player 2");
-string user2 = Console.ReadLine();
+    
 
+
+
+static void main()
+{
+ //inital welcomign and user name
+ Console.WriteLine("Welcome to tic tac toe");
+
+ Console.WriteLine("Enter the name of player 1");
+ string user1 = Console.ReadLine();
+ Console.WriteLine("Enter the name of player 2");
+ string user2 = Console.ReadLine();
+}
 Players(user1,user2);
