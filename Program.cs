@@ -34,11 +34,11 @@ string checkResult()
         {
             if (grid[a] == "X")
             {
-                return "Player1Win";
+                return "player 1 wins";
             }
             else if (grid[a] == "O")
             {
-                return "Player2Win";
+                return "player 2 wins";
             }
         }
     }
