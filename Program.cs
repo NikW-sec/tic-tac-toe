@@ -7,16 +7,16 @@ static void Players(string name1, string name2) //set up two players and their n
   Console.WriteLine(player1);
 }  
 
-
-
-static void TheGrid() //function for gird
-{
- string[] grid =
+string[] grid =
   {
     "1", "2", "3",
     "4", "5", "6",
     "7", "8", "9"
   };
+
+
+static void displayGrid() //display the current gird
+{
   //to display grid
   Console.WriteLine($"{grid[0]} | {grid[1]} | {grid[2]}");
   Console.WriteLine("---------");
@@ -46,6 +46,19 @@ void turn()
   }
 }
 
+void gridReplacement(int gridnumber)
+{
+ string symbol = null; // use to track if it is X or O
+ if (currentPlayer == "Player1")
+    {
+      symbol = "X"; //player1 use x
+    }
+ else
+    {
+        symbol = "O"; //player2 use o
+    }
+ 
+}
     
 
 
@@ -61,3 +74,5 @@ static void main()
  string user2 = Console.ReadLine();
 }
 Players(user1,user2);
+
+
