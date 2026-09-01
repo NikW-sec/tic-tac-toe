@@ -32,7 +32,7 @@ Worked on:
 - `CurrentPlayerAndScore()` — displays the current player and score
 - `rematchAndScore()` — displays results, tracks scores and handles rematches
 
-### joshlam67 — Game logic
+### joshlam23 — Game logic
 
 Worked on:
 
@@ -91,4 +91,4 @@ We used GitHub to collaborate through:
 ## Contributors
 
 - [NikW-sec](https://github.com/NikW-sec) — game interface
-- [joshlam67](https://github.com/joshlam67) — game logic
+- [joshlam23](https://github.com/joshlam23) — game logic
