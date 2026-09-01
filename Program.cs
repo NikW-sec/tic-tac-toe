@@ -91,7 +91,7 @@ void main()
             Console.WriteLine("It's a draw!");
             playing = rematchAndScore("nobody");
         }
-        // if "game ongoing", loop continues to next turn automatically
+        
     }
 }
 
