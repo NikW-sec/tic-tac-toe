@@ -1,3 +1,13 @@
-﻿Console.WriteLine("Hello, World!");
+static int playerChoice()
+{
+    while (true)
+    {
+        Console.Write("choose a square: ");
+        int number = int.Parse(Console.ReadLine());
 
-//test
+        if (number >= 1 && number <= 9)
+        {
+            return number;
+        }
+    }
+}
