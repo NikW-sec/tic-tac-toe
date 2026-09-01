@@ -24,6 +24,9 @@ string checkResult()
         {0,4,8}, {2,4,6}          // diagonal
     };
 
+
+
+    //win check
     for (int i = 0; i < 8; i++)
     {
         int a = winPatterns[i, 0];
@@ -42,4 +45,26 @@ string checkResult()
             }
         }
     }
+
+
+
+
+    //draw check
+    bool full = true;
+    foreach (string item in grid)
+    {
+        if (item != "X" && item != "O")
+        {
+            full = false;
+            break;
+        }
+    }
+
+    if (full)
+    {
+        return "draw";
+    }
+
+    return "game ongoing"; 
 }
+
