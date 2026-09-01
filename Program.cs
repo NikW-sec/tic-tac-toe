@@ -1,21 +1,17 @@
-static int playerChoice()
+int playerChoice()
 {
     while (true)
     {
         Console.Write($"{currentPlayer}, choose a square: ");
         int number = int.Parse(Console.ReadLine());
 
-        if (number >= 0 && number <= 8)
+        if (number >= 0 && number <= 8 && grid[number] != "X" && grid[number] != "O")
         {
             return number;
         }
+        Console.WriteLine("invalid square/taken");
     }
 }
-
-
-
-
-
 
 string checkResult()
 {
@@ -23,10 +19,9 @@ string checkResult()
     {
         {0,1,2}, {3,4,5}, {6,7,8}, // row
         {0,3,6}, {1,4,7}, {2,5,8}, // column
-        {0,4,8}, {2,4,6}          // diagonal
+        {0,4,8}, {2,4,6}           // diagonal
     };
 
-    //win check
     for (int i = 0; i < 8; i++)
     {
         int a = winPatterns[i, 0];
@@ -46,7 +41,6 @@ string checkResult()
         }
     }
 
-    //draw check
     bool full = true;
     foreach (string item in grid)
     {
@@ -60,6 +54,5 @@ string checkResult()
     {
         return "draw";
     }
-    return "game ongoing"; 
+    return "game ongoing";
 }
-
