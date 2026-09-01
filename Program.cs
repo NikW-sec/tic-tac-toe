@@ -1,4 +1,3 @@
-using System.Security.Authentication.ExtendedProtection;
 
 string player1Name = "";
 string player2Name = "";
@@ -139,19 +138,54 @@ bool rematchAndScore(string result)
 }
 
 
+void restgrid()
+{
+ string[] grid =
+  {
+    "0", "1", "2",
+    "3", "4", "5",
+    "6", "7", "8"
+  };
+}
 
 
 
 void main()
 {
- inital();
- displayGrid();
- CurrentPlayerAndScore();
- Console.WriteLine(turn());
- playerChoice();  //function in the logic branch, not here yet
- gridReplacement();
- checkResult(); //function in the logic branch, chekc win loss draw etc
- //if someone win:
- //rematchAndScore();
+    inital();
 
+    bool playing = true;
+
+    while (playing)
+    {
+        string result = "InProgress";
+
+        // Run one complete game.
+        while (result == "InProgress")
+        {
+            displayGrid();
+
+            Console.WriteLine(turn());
+
+            int selectedSquare = playerChoice(); //the player select a square to place on
+
+            gridReplacement(selectedSquare); //place the square
+
+            
+            result = checkResult(); //check condition win/draw/in progress
+
+           //mark the next person's turn
+            if (result == "InProgress")
+            {
+                turning++;
+            }
+        }
+
+        
+        displayGrid();
+        
+        playing = rematchAndScore(result);// display the result, update scores and ask for a rematch
+    }
 }
+
+main();
