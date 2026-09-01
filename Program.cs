@@ -5,7 +5,7 @@ static int playerChoice()
         Console.Write($"{currentPlayer}, choose a square: ");
         int number = int.Parse(Console.ReadLine());
 
-        if (number >= 1 && number <= 9)
+        if (number >= 0 && number <= 8)
         {
             return number;
         }
