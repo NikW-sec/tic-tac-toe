@@ -11,6 +11,3 @@ static int playerChoice()
         }
     }
 }
-
-
-choice();
