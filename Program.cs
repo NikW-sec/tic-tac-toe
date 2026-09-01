@@ -1,3 +1,5 @@
+using System.Security.Authentication.ExtendedProtection;
+
 static void Players(string name1, string name2) //set up two players and their name (name using input later)
 {
   string player1 = name1;
@@ -9,13 +11,13 @@ static void Players(string name1, string name2) //set up two players and their n
 
 string[] grid =
   {
-    "1", "2", "3",
-    "4", "5", "6",
-    "7", "8", "9"
+    "0", "1", "2",
+    "3", "4", "5",
+    "6", "7", "8"
   };
 
 
-static void displayGrid() //display the current gird
+void displayGrid() //display the current gird 
 {
   //to display grid
   Console.WriteLine($"{grid[0]} | {grid[1]} | {grid[2]}");
@@ -23,11 +25,13 @@ static void displayGrid() //display the current gird
   Console.WriteLine($"{grid[3]} | {grid[4]} | {grid[5]}");
   Console.WriteLine("---------");
   Console.WriteLine($"{grid[6]} | {grid[7]} | {grid[8]}");
+  Console.WriteLine();
 }
 
 
 int turning = 0;  // used to decide if it is palyer 1 or 2 turn, use even or odd caluculation
 string currentPlayer = null;  //use for who actual place a move later
+bool ended = false;
 void turn()
 {
  while (ended = false)
@@ -46,6 +50,7 @@ void turn()
   }
 }
 
+
 void gridReplacement(int gridnumber)
 {
  string symbol = null; // use to track if it is X or O
@@ -57,6 +62,9 @@ void gridReplacement(int gridnumber)
     {
         symbol = "O"; //player2 use o
     }
+ grid[gridnumber] = symbol;
+
+
  
 }
     
@@ -72,7 +80,27 @@ static void main()
  string user1 = Console.ReadLine();
  Console.WriteLine("Enter the name of player 2");
  string user2 = Console.ReadLine();
+ Players(user1,user2);
 }
-Players(user1,user2);
+
+int CurrentPlayerAndScore()
+{
+ if (currentPlayer == "Player1")
+ {
+  return $"Current player: {currentPlayer}, score {player1Score}";
+ }
+ else
+ {
+  return $"Current player: {currentPlayer}, score {player2Score}"; 
+ }
+}
+
+
+main();
+displayGrid();
+currentPlayer = "Player1";
+gridReplacement(1);
+displayGrid();
+CurrentPlayerAndScore();
 
 
