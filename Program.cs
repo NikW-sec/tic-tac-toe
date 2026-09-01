@@ -57,7 +57,10 @@ void gridReplacement(int gridnumber)
  
 }
     
-
+string player1Name = null;
+string player2Name = null;
+int player1Score = 0;
+int player2Score = 0;
 
 
 static void main()
@@ -69,10 +72,11 @@ static void main()
  string player1 = Console.ReadLine();
  Console.WriteLine("Enter the name of player 2");
  string player2 = Console.ReadLine();
+ player1Name = player1;
+ player2Name = player2;
 }
 
-int player1Score = 0;
-int player2Score = 0;
+
 
 string CurrentPlayerAndScore()
 {
@@ -85,6 +89,35 @@ string CurrentPlayerAndScore()
   return $"Current player: {currentPlayer}, score {player2Score}"; 
  }
 }
+
+void rematchAndScore(string nameOfWinner)
+{
+ Console.WriteLine($"Congraduations {nameOfWinner}, you won!");
+ Console.WriteLine();
+ Console.WriteLine($"{player1Name}  score: {player1Score}");
+ Console.WriteLine($"{player1Name}  score: {player1Score}");
+ Console.WriteLine();
+ Console.WriteLine($"Do you want to rematch ?");
+ rematch = Console.Read();
+ while (rematch != "yes" && rematch != "no")
+    {
+        Console.WriteLine("Please enter 'yes' or 'no'");
+        Console.WriteLine($"Do you want to rematch ?");
+        rematch = Console.Read();
+    }
+ if (rematch == "yes")
+  {}
+  //leave this for now
+ else
+    {
+        Console.WriteLine("Goodbye");
+        //exit for stop loop? (do this later)
+    }
+}
+
+
+
+
 
 
 main();
