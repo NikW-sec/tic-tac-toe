@@ -1,3 +1,4 @@
+//the two players' name and score
 string player1Name = "";
 string player2Name = "";
 int player1Score = 0;
@@ -6,7 +7,7 @@ int player2Score = 0;
 
 
 
-void inital()
+void inital() //ask for names
 {
     Console.WriteLine("Welcome to tic tac toe");
     Console.WriteLine("Enter the name of player 1");
@@ -17,38 +18,38 @@ void inital()
     player2Name = player2;
 }
 
-string[] grid =
+string[] grid = //the grid
 {
     "0", "1", "2",
     "3", "4", "5",
     "6", "7", "8"
 };
 
-void displayGrid()
+void displayGrid() //show the current grid
 {
     Console.WriteLine($"{grid[0]} | {grid[1]} | {grid[2]}");
     Console.WriteLine("---------");
     Console.WriteLine($"{grid[3]} | {grid[4]} | {grid[5]}");
     Console.WriteLine("---------");
     Console.WriteLine($"{grid[6]} | {grid[7]} | {grid[8]}");
-    Console.WriteLine();
+    Console.WriteLine(); //better spacing
 }
 
 void resetGrid()
 {
     for (int i = 0; i <= 8; i++)
     {
-        grid[i] = i.ToString();
+        grid[i] = i.ToString(); //rest the grid to default
     }
 }
 
-int turning = 0;
-string currentPlayer = "Player1";
+int turning = 0; //value used to keep track of the turn
+string currentPlayer = "Player1";  //the player that is placing a move
 
 string turn()
 {
     string message;
-    if (turning % 2 == 0)
+    if (turning % 2 == 0) //player1's turn if it is even
     {
         currentPlayer = "Player1";
         message = "It is player 1's turn";
@@ -73,7 +74,7 @@ void gridReplacement(int gridnumber)
     {
         symbol = "O";
     }
-    grid[gridnumber] = symbol;
+    grid[gridnumber] = symbol; //replace that square with the player's symbol
 }
 
 
@@ -89,7 +90,7 @@ string CurrentPlayerAndScore()
     }
 }
 
-bool rematchAndScore(string winner)
+bool rematchAndScore(string winner) //return true or false to see if the game should continue
 {
     Console.WriteLine($"{winner} won");
     Console.WriteLine();
@@ -106,8 +107,8 @@ bool rematchAndScore(string winner)
     }
     if (rematch == "yes")
     {
-        resetGrid();
-        turning = 0;
+        resetGrid(); 
+        turning = 0; //rest the player turn
         return true;
     }
     else
