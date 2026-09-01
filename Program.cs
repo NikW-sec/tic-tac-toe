@@ -1,3 +1,20 @@
+string player1Name = "";
+string player2Name = "";
+int player1Score = 0;
+int player2Score = 0;
+void inital()
+{
+ //inital welcomign and user name
+ Console.WriteLine("Welcome to tic tac toe");
+
+ Console.WriteLine("Enter the name of player 1");
+ string player1 = Console.ReadLine();
+ Console.WriteLine("Enter the name of player 2");
+ string player2 = Console.ReadLine();
+ player1Name = player1;
+ player2Name = player2;
+}
+
 string[] grid =
   {
     "0", "1", "2",
@@ -19,24 +36,20 @@ void displayGrid() //display the current gird
 
 
 int turning = 0;  // used to decide if it is palyer 1 or 2 turn, use even or odd caluculation
-string currentPlayer = null;  //use for who actual place a move later
-bool ended = false;
+string currentPlayer = "Player1";  //use for who actual place a move later
 void turn()
 {
- while (ended = false)
-  { 
     if (turning % 2 ==0)
      {
-        Console.WriteLine("It is player 1's turn");
+        return"It is player 1's turn";
         currentPlayer = "Player1";
      }
     else
      {
-        Console.WriteLine("It is player 2's turn");
+        return"It is player 2's turn";
         currentPlayer = "Player2"; 
      }
     turning ++;
-  }
 }
 
 
@@ -53,29 +66,8 @@ void gridReplacement(int gridnumber)
     }
  grid[gridnumber] = symbol;
 
-
- 
 }
     
-string player1Name = null;
-string player2Name = null;
-int player1Score = 0;
-int player2Score = 0;
-
-
-static void main()
-{
- //inital welcomign and user name
- Console.WriteLine("Welcome to tic tac toe");
-
- Console.WriteLine("Enter the name of player 1");
- string player1 = Console.ReadLine();
- Console.WriteLine("Enter the name of player 2");
- string player2 = Console.ReadLine();
- player1Name = player1;
- player2Name = player2;
-}
-
 
 
 string CurrentPlayerAndScore()
@@ -89,6 +81,7 @@ string CurrentPlayerAndScore()
   return $"Current player: {currentPlayer}, score {player2Score}"; 
  }
 }
+
 
 void rematchAndScore(string nameOfWinner)
 {
@@ -119,11 +112,17 @@ void rematchAndScore(string nameOfWinner)
 
 
 
+void main();
+{
+ inital();
+ displayGrid();
+ CurrentPlayerAndScore();
+ Console.WriteLine(turn());
+ playerChoice();  //function in the logic branch, not here yet
+ gridReplacement();
+ checkResult(); //function in the logic branch, chekc win loss draw etc
+ //if someone win:
+ //rematchAndScore();
 
-main();
-displayGrid();
-currentPlayer = "Player1";
-gridReplacement(1);
-displayGrid();
-Console.WriteLine(CurrentPlayerAndScore());
+}
 
