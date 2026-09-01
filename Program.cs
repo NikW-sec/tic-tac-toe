@@ -1,3 +1,5 @@
+using System.Security.Authentication.ExtendedProtection;
+
 string player1Name = "";
 string player2Name = "";
 int player1Score = 0;
@@ -37,17 +39,17 @@ void displayGrid() //display the current gird
 
 int turning = 0;  // used to decide if it is palyer 1 or 2 turn, use even or odd caluculation
 string currentPlayer = "Player1";  //use for who actual place a move later
-void turn()
+string turn()
 {
     if (turning % 2 ==0)
      {
-        return"It is player 1's turn";
         currentPlayer = "Player1";
+        return"It is player 1's turn";
      }
     else
      {
-        return"It is player 2's turn";
         currentPlayer = "Player2"; 
+        return"It is player 2's turn";
      }
     turning ++;
 }
@@ -55,7 +57,7 @@ void turn()
 
 void gridReplacement(int gridnumber)
 {
- string symbol = null; // use to track if it is X or O
+ string symbol = ""; // use to track if it is X or O
  if (currentPlayer == "Player1")
     {
       symbol = "X"; //player1 use x
@@ -83,28 +85,56 @@ string CurrentPlayerAndScore()
 }
 
 
-void rematchAndScore(string nameOfWinner)
+
+bool rematchAndScore(string result)
 {
- Console.WriteLine($"Congraduations {nameOfWinner}, you won!");
- Console.WriteLine();
- Console.WriteLine($"{player1Name}  score: {player1Score}");
- Console.WriteLine($"{player1Name}  score: {player1Score}");
- Console.WriteLine();
- Console.WriteLine($"Do you want to rematch ?");
- rematch = Console.Read();
- while (rematch != "yes" && rematch != "no")
+    if (result == "Player1Win")
     {
-        Console.WriteLine("Please enter 'yes' or 'no'");
-        Console.WriteLine($"Do you want to rematch ?");
-        rematch = Console.Read();
+        player1Score++;
+        Console.WriteLine(
+            $"Congratulations {player1Name}, you won!");
     }
- if (rematch == "yes")
-  {}
-  //leave this for now
- else
+    else if (result == "Player2Win")
     {
-        Console.WriteLine("Goodbye");
-        //exit for stop loop? (do this later)
+        player2Score++;
+        Console.WriteLine(
+            $"Congratulations {player2Name}, you won!");
+    }
+    else if (result == "Draw")
+    {
+        Console.WriteLine("The game is a draw.");
+    }
+    else
+    {
+        Console.WriteLine("The game has not ended.");
+        return true;
+    }
+
+    Console.WriteLine();
+    Console.WriteLine($"{player1Name} score: {player1Score}");
+    Console.WriteLine($"{player2Name} score: {player2Score}");
+    Console.WriteLine();
+
+    while (true)
+    {
+        Console.Write("Do you want a rematch? Enter yes or no: ");
+
+        string answer =
+            (Console.ReadLine() ?? "").Trim().ToLower();
+
+        if (answer == "yes")
+        {
+            resetGrid();
+            return true;
+        }
+
+        if (answer == "no")
+        {
+            Console.WriteLine("Goodbye");
+            return false;
+        }
+
+        Console.WriteLine("Please enter 'yes' or 'no'.");
     }
 }
 
@@ -112,7 +142,7 @@ void rematchAndScore(string nameOfWinner)
 
 
 
-void main();
+void main()
 {
  inital();
  displayGrid();
@@ -125,4 +155,3 @@ void main();
  //rematchAndScore();
 
 }
-
