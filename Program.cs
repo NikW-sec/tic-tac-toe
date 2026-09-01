@@ -15,6 +15,8 @@ static int playerChoice()
 
 
 
+
+
 string checkResult()
 {
     int[,] winPatterns =
@@ -23,8 +25,6 @@ string checkResult()
         {0,3,6}, {1,4,7}, {2,5,8}, // column
         {0,4,8}, {2,4,6}          // diagonal
     };
-
-
 
     //win check
     for (int i = 0; i < 8; i++)
@@ -46,9 +46,6 @@ string checkResult()
         }
     }
 
-
-
-
     //draw check
     bool full = true;
     foreach (string item in grid)
@@ -59,12 +56,10 @@ string checkResult()
             break;
         }
     }
-
     if (full)
     {
         return "draw";
     }
-
     return "game ongoing"; 
 }
 
