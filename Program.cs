@@ -56,3 +56,43 @@ string checkResult()
     }
     return "game ongoing";
 }
+
+void main()
+{
+    inital();
+    bool playing = true;
+
+    while (playing)
+    {
+        displayGrid();
+        Console.WriteLine(turn());
+        Console.WriteLine(CurrentPlayerAndScore());
+
+        int choice = playerChoice();
+        gridReplacement(choice);
+
+        string result = checkResult();
+
+        if (result == "player 1 wins")
+        {
+            player1Score++;
+            displayGrid();
+            playing = rematchAndScore(player1Name);
+        }
+        else if (result == "player 2 wins")
+        {
+            player2Score++;
+            displayGrid();
+            playing = rematchAndScore(player2Name);
+        }
+        else if (result == "draw")
+        {
+            displayGrid();
+            Console.WriteLine("It's a draw!");
+            playing = rematchAndScore("nobody");
+        }
+        // if "game ongoing", loop continues to next turn automatically
+    }
+}
+
+main();
